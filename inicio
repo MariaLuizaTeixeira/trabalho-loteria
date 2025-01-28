@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+body {color: #000000;}
+</style>
+<head>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
+    
+    <title> Loteria do IF</title>
+</head>
+
+<body>
+<center><h1>LOTERIA DO IF</h1></center>
+    <h3>---------- MENU ----------<br></h3>
+    <a href=http://localhost/malu.php/como-jogar.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Como jogar [1]<br></p></button>
+    </a>
+
+    <a href=http://localhost/malu.php/mega-sena.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Mega-Sena [2]<br></p></button>
+    </a>
+
+    <a href=http://localhost/malu.php/quina.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Quina [3]<br></p></button>
+    </a>
+
+    <a href=http://localhost/malu.php/lotomania.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Lotomania [4]<br></p></button>
+    </a>
+
+    <a href=http://localhost/malu.php/lotofacil.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Lotofácil [5]<br></p></button>
+    </a>
+
+
