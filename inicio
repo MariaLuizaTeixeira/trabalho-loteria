@@ -14,24 +14,56 @@ body {color: #000000;}
 <body>
 <center><h1>LOTERIA DO IF</h1></center>
     <h3>---------- MENU ----------<br></h3>
-    <a href=http://localhost/malu.php/como-jogar.php>
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Como jogar [1]<br></p></button>
+
+    
+
+    <?php
+
+        function(&$voltar): string
+
+        {
+            <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="voltar"><p>Voltar<br></p></button>;
+
+            if (isset($_POST['voltar'])) 
+            {
+                return $voltar;
+            }
+            
+        }
+
+
+    ?>
+    <a href=http://localhost/malu.php/loteria/como-jogar.php>
+    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="como-jogar"><p>Como jogar [1]<br></p></button>
+    
+    <?php
+
+        if (isset($_POST['como-jogar'])) 
+        {
+            $voltar = "http://localhost/malu.php/loteria/como-jogar.php";
+        }
+
+    ?>
     </a>
 
-    <a href=http://localhost/malu.php/mega-sena.php>
+    <a href=http://localhost/malu.php/loteria/mega-sena.php>
     <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Mega-Sena [2]<br></p></button>
+
+
     </a>
 
-    <a href=http://localhost/malu.php/quina.php>
+    <a href=http://localhost/malu.php/loteria/quina.php>
     <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Quina [3]<br></p></button>
     </a>
 
-    <a href=http://localhost/malu.php/lotomania.php>
+    <a href=http://localhost/malu.php/loteria/lotomania.php>
     <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Lotomania [4]<br></p></button>
     </a>
 
-    <a href=http://localhost/malu.php/lotofacil.php>
+    <a href=http://localhost/malu.php/loteria/lotofacil.php>
     <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button"><p>Lotofácil [5]<br></p></button>
     </a>
+
+    </html>
 
 
