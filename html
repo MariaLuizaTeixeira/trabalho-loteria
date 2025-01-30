@@ -3,71 +3,117 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style type="text/css">
-    body {
-        color: #000000;
-    }
-</style>
-
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
-    
-    <title> Loteria do IF</title>
-</head>
-
-<body>
-    
-    <img src="retangulo-rosa.avif" alt="retângulo rosa" style="width:1900px;height:100px";>
-
-    <center>
-        <h1>LOTERIA DO IF</h1>
-    </center>
-
-    <hr>
-    <h2> MENU <br></h2>
-
-    <?php
-
-        function voltar (&$voltar): string 
+    <style type="text/css">
+        body 
         {
-            print('');
-
-            if (isset($_POST['voltar'])) 
-            {
-                return $voltar;
-            }
-
-            $voltar = "http://localhost/malu.php/loteria/loteria.php";
-
+            color: black;
         }
 
-    ?>
 
-    <a href=http://localhost/malu.php/loteria/como-jogar.php>
+    </style>
+
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
+
+        <body style="background-color: white;">
+    
+        <title>Loteria</title>
+    </head>
+
+    <body>
+    
+        <div class="container">
+            <img src="retangulo-rosa.avif" alt="retângulo rosa" style="width:1900px;height:800px";>
+            <div>
+                <center>
+                    <header style="font-family:'Monaco';font-size: 900% ;color:antiquewhite" >LOTERIA</header>
+                </center>
+            </div>
+        </div>  
+
+
+            
         
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="como-jogar"><p>Como jogar<br></p></button>
-    </a>
 
-    <a href=http://localhost/malu.php/loteria/mega-sena.php>
+        <hr>
+        <h2> 
+            MENU <br>
+        </h2>
+
+        <?php
+
+            function voltar (&$voltar): string 
+            {
+                print('');
+
+                if (isset($_POST['voltar'])) 
+                {
+                    return $voltar;
+                }
+
+                $voltar = "http://localhost/malu.php/loteria/loteria.php";
+
+            }
+
+        ?>
+
+        <a
+            href=http://localhost/malu.php/loteria/como-jogar.php>
+            <button 
+            style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="como-jogar">
+            <p>
+                Como jogar<br>
+            </p>
+            </button>
+        </a>
+
+        <a 
+            href=http://localhost/malu.php/loteria/mega-sena.php>
         
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="mega-sena"><p>Mega-Sena<br></p> </button>
-    </a>
+            <button 
+                style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="mega-sena">
+                <p>
+                    Mega-Sena<br>
+                </p> 
+            </button>
+        </a>
 
-    <a href=http://localhost/malu.php/loteria/quina.php>
+        <a 
+            href=http://localhost/malu.php/loteria/quina.php>
         
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="quina"><p>Quina<br></p></button>
-    </a>
+            <button 
+                style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="quina">
+                <p>
+                    Quina<br>
+                </p>
+            </button>
+        </a>
 
-    <a href=http://localhost/malu.php/loteria/lotomania.php>
+        <a 
+            href=http://localhost/malu.php/loteria/lotomania.php>
         
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="lotomania"><p>Lotomania<br></p></button>
-    </a>
+            <button 
+                style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="lotomania">
+                <p>
+                    Lotomania<br>
+                </p>
+            </button>
+        </a>
 
-    <a href=http://localhost/malu.php/loteria/lotofacil.php>
+        <a 
+            href=http://localhost/malu.php/loteria/lotofacil.php>
         
-    <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="lotofacil"><p>Lotofácil<br></p></button>
-    </a>
+            <button style="background-color: deeppink;color:white;border-style: none;font-family:'Monaco';font-size: 100%;border-radius: 15px" type="button" name="lotofacil">
+                <p>
+                    Lotofácil<br>
+                </p>
+            </button>
+        </a>
 
+        <hr>
+        <img src="loteria.jpeg" alt="foto-inicial" style="width:1500px;height:450px">
+
+    </body>
 </html>
