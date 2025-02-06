@@ -1,97 +1,153 @@
-<?php
+<?php 
 
-   $numeros_minimos_sortear;
-   $numeros_maximos_sortear = 99;
-   $sorteados = [];
+$clientes = [];
+$contas = [];
 
-   apostar($idade);
+//Cliente que sempre existe
+$cliente = 
+[
+    "nome" => "John Doe",
+    "cpf"  => "00000000000", //11 digitos
+    "telefone" => "(45)9999999999" //10 digitos
+];
 
-    function apostar($idade): string
+$clientes[] = $cliente;
+
+$conta = 
+[
+    "numeroConta" => uniqid(),
+    "cpfCliente" => "00000000000",
+    "saldo" => 0
+];
+
+$contas[] = $conta;
+
+menu($opcao, $conta);
+
+function menu(&$opcao, &$conta, $validadorCPF, $j_valido, $k_valido): void
+{
+    system('clear');
+    
+    print("---------- MENU ----------\n");
+    print("Cadastrar [1]\n");
+    print("Depositar [2]\n");
+    print("Sacar [3]\n");
+    print("Consultar saldo [4]\n");
+    print("Sair [5]\n");
+
+    $opcao = readline("Insira a opção (em número):\n");
+
+    switch ($opcao) 
     {
-        do 
-        {
-            print("Você tem mais de 18 anos?\n");
-            $idade = readline("[1] Sim\n [2] Não\n");
+        case 1:
+            $nome = readline("Insira o seu nome: ");
 
-            if ($idade == 2) 
-            {
-                print("Apostas são apenas para maiores de 18 anos.");
-                break;
-            }
-            else 
-            {
-                break;
+            $cpf = readline("Insira o seu cpf: ");
+            for ($i=0; $i <= 9; $i++)
+            { 
+                $validadorCPF += substr($cpf, $i, 1) * 10 - $i;
             }
 
-        } while ($idade != 1 || $idade != 2);
+            if($validadorCPF % 11 < 2)
+            {
+                $j_valido = true;
+            }
+            if ($validadorCPF % 11 > 10)
+            {
+                
+            }
+            $telefone = readline("Insira o seu telefone: ");
 
-        return $idade;
+            cadastrarCliente($clientes, $nome, $cpf, $telefone);
+            cadastrarConta($contas, $cpf);
+            menu($opcao, $conta);
+        break;
+    
+        case 2:
+            $cpfInserido = readline("Insira o seu cpf:");
+            $quantia = readline("Insira o valor que deseja depositar:");
+            $numeroConta = $conta ['numeroConta'];
+            depositar($contas, $numeroConta, $quantia, $cpfInserido);
+        break;
+
+        case 3:
+
     }
+    
+}
 
-    function como_jogar()
+function cadastrarCliente(&$clientes, string $nome, string $cpf, string $telefone): void 
+{
+    
+    //global $clientes; //Alternativa para acesso de variáveis fora do escopo da função
+
+    $cliente = [
+        "nome" => $nome,
+        "cpf"  => $cpf, //11 digitos
+        "telefone" => $telefone //10 digitos
+    ];
+    
+    $clientes[] = $cliente;
+    
+}
+
+function cadastrarConta(&$contas, &$cpf): string
+{
+    
+    $conta = 
+    [
+        "numeroConta" => uniqid(),
+        "cpfCliente" => $cpf,
+        "saldo" => 0
+    ];
+    
+    $contas[] = $conta;
+
+    return $conta['numeroConta'];
+    print("Sua conta foi cadastrada com");
+}
+
+function depositar(&$contas, $numeroConta, $quantia, $cpfInserido): void
+{
+    foreach ($contas as &$conta) 
     {
-        // paqrte html que explica como jogar
-    }
-
-    function mega_sena()
-    {
-       // parte html que explica mega-sena
-
-       $numeros_minimos_sortear = 6;
-       $numeros_maximos_sortear = 20;
-
-       for ($i=0; $i <= $numeros_maximos_sortear; $i++)
+        if ($conta['cpfCliente'] == $cpfInserido)
         {
-            $sorteados[$i] = readline("Insira o {$i}º número");
+            $conta['saldo'] += $quantia;
+            print("Depósito de R$ {$quantia} realizado com sucesso na conta {$numeroConta}.");
 
-            for($j=0; $j > $i; $j++)
-            {
-               ($sorteados[$i] == $sorteados[$j] && $j != $i)
-                {
-                   $sorteados[$i] = rand(0, 60);
-                   $j--;
-                }
-            }
+            break;
         }
 
-        print_r($sorteados);
-
+        else {
+            print("Conta {$numeroConta} não encontrada.");
+        }
     }
+}
 
-    function quina()
+function sacar(&$contas, $numeroConta, $quantia): void
+{
+    foreach ($contas as &$conta) 
     {
-        $numeros_minimos_sortear = 5;
-       $numeros_maximos_sortear = 15;
-    }
-    function lotomania()
-    {
-        $numeros_minimos_sortear = 50;
-       $numeros_maximos_sortear = 50;
-    }
-
-    function lotofacil()
-    {
-        $numeros_minimos_sortear = 15;
-       $numeros_maximos_sortear = 20;
-    }
-
-    function surpresinha (): void
-    {
-        for($i=0; $i <= $numeros_maximos_sortear; $i++)
+        if ($conta['numeroConta'] == $numeroConta)
         {
-            $sorteados[$i] = rand(0, 60);
-
-            for($j=0; $j > $i; $j++)
-            {
-                ($sorteados[$i] == $sorteados[$j] && $j != $i)
-                {
-                    $sorteados[$i] = rand(0, 60);
-                    $j--;
-                }
-            }
+            $conta['saldo'] -= $quantia;
         }
 
-        print_r($sorteados);
+        else 
+        {
+            print("Conta {$numeroConta} não encontrada.");
+        }
     }
+}
 
-?>
+function consultarSaldo(&$contas, $numeroConta): void
+{
+    foreach ($contas as &$conta) 
+    {
+        if ($conta['numeroConta'] == $numeroConta)
+        {
+            print("Saldo da conta {$numeroConta}: R$ {$conta['saldo']}");
+        }
+    }
+}
