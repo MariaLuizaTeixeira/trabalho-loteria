@@ -1,0 +1,137 @@
+<?php
+
+$clientes = [];
+$contas   = [];
+
+function menu(){
+
+    global $clientes;
+    global $contas;
+
+    print("1- cadastrar cliente \n");
+    print("2- cadastrar conta\n");
+    print("3- depositar\n");
+    print("4- sacar\n");
+    print("5- consultar saldo\n");
+    print("6- criar conta\n");
+
+    $opcao = readline("informe uma opção: ");
+
+    if ($opcao == 1){
+       $nome = readline ("informe seu nome ");
+       $cpf = readline("informe seu cpf ");
+       $telefone = readline ("informe seu telefone ");
+
+       cadastrarCliente($clientes, $nome, $cpf, $telefone);
+
+       print_r ($clientes);
+
+        menu();
+
+    } else if ($opcao == 2){
+        $numeroConta = readline ("informe sua conta ");
+        $cpfCliente = readline ("informe seu cpf ");
+
+        cadastrarConta($contas, $cpfCliente);
+
+        print_r ($contas);
+        menu();
+
+    } else if ($opcao == 3){
+        $contas = readline ("informe sua conta ");
+        $numeroConta = readline ("informe o número da conta ");
+        $quantia = readline ("informe a quantia ");
+
+        depositar($contas, $numeroConta, $quantia);
+
+        print_r ($contas);
+        menu();
+
+    } else if ($opcao == 4){
+        $contas = readline ("informe a conta ");
+        $numeroConta = readline ("informe o número da conta ");
+        $quantia = readline ("Informe a quantia ");
+
+        sacar($contas, $numeroConta, $quantia);
+
+        print_r ();
+        menu();
+
+    }
+}
+
+ menu();
+
+function cadastrarCliente(&$clientes, string $nome, string $cpf, string $telefone): void {
+   
+    $cliente = [
+        "nome" => $nome,
+        "cpf" => $cpf, //11 digitos
+        "telefone" => $telefone //10 digitos
+    ];
+    
+    $clientes[] = $cliente;
+}
+
+function cadastrarConta(&$contas, $cpfCliente): string {
+
+    $conta = [
+     "numeroConta" => uniqid(),
+     "cpfCliente" => $cpfCliente,
+     "saldo" => 0
+    ];
+
+    $contas[] = $conta;
+
+    return $conta['numeroConta'];
+};
+
+
+function depositar(&$contas, $numeroConta, $quantia){
+
+    foreach ($contas as &$conta){
+        if ($conta['numeroConta'] == $numeroConta){
+            $conta['saldo'] += $quantia;
+            
+            print "Deposito de R$ ($quantia) realizado com sucesso na conta ($numeroConta)";
+
+            break;
+
+       } else {
+            print "Conta $numeroConta não encontrada.";
+       }
+
+    } 
+ }
+
+
+function sacar(&$contas, $numeroConta, $quantia){
+
+        foreach ($contas as &$conta) {
+            if ($conta['numeroConta'] == $numeroConta){
+                $conta['saldo'] -= $quantia;
+            } else {
+                print "Conta $numeroConta não encontrada.";
+            }
+        }
+}
+
+
+function consultarSaldo(&$contas, $numeroConta){
+
+    foreach ($contas as &$conta) {
+        if ($conta['numeroConta'] == $numeroConta){
+            print "Saldo da conta {$numeroConta}: R$ {$conta['saldo']}";
+        } else {
+            print "Conta $numeroConta não encontrada.";
+        }
+    }
+
+}
+
+
+
+//  cadastrarCliente($clientes, "Amanda", "085558", "4544554");
+//  $numeroConta = cadastrarConta($contas, "00000000000");
+
+// print_r($contas);
