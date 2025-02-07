@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="imagens/favicon.ico">
+
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap" rel="stylesheet">
+        
+        <title>Loteria</title>
+        <link rel="stylesheet" href="css/style-inicial.css">
+    </head>
+
+    <header>
+        <h1>MARIA LUIZA</h1>
+        <p style="right: 1200px;"><a href="http://localhost/malu.php/loteria/como-jogar.php">Como jogar </a></p>
+        <p style="right: 1000px;"><a href="http://localhost/malu.php/loteria/megasena.php">Megasena</a></p>
+        <p style="right: 800px;"><a href="http://localhost/malu.php/loteria/quina.php">Quina</a></p>
+        <p style="right: 650px;"><a href="http://localhost/malu.php/loteria/quina.php">Lotomania</a></p>
+        <p style="right: 400px;"><a href="http://localhost/malu.php/loteria/quina.php">Lotofácil</a></p>
+        <img src="imagens/trevocerto.webp" alt="trevo">
+    </header>
+    <body>
+        <h1>Loteria</h1>
+        <p>Apenas para maiores de 18 anos</p>
+        <img src="imagens/bolas.png" alt="bolas">
+
+    </body>
+
+    <main>
+        
+    <a
+            href=>http://localhost/malu.php/loteria/mega-sena.php
+            
+            <button 
+                type="button" name="mega-sena">
+                <p>
+                    Mega-Sena<br>
+                </p> 
+            </button>
+        </a>
+
+        <a 
+            href=http://localhost/malu.php/loteria/quina.php>
+            
+            <button 
+                type="button" name="quina">
+                <p>
+                    Quina<br>
+                </p>
+            </button>
+        </a>
+
+        <a 
+            href=http://localhost/malu.php/loteria/lotomania.php>
+            
+            <button 
+                type="button" name="lotomania">
+                <p>
+                    Lotomania<br>
+                </p>
+            </button>
+        </a>
+
+        <a 
+            href=http://localhost/malu.php/loteria/lotofacil.php>
+            
+            <button 
+                type="button" name="lotofacil">
+                <p>
+                    Lotofácil<br>
+                </p>
+            </button>
+        </a>
+
+        <hr>
+            
+    </main>
+
+    
+</html>
