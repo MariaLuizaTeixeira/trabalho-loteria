@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megasena</title>
+
+    <link rel="stylesheet" href="css/apostas.css">
+</head>
+
+<header>
+    <h1>Megasena</h1>
+    <img src="imagens/megasena.png" alt="megasena">
+</header>
+
+<body>
+    
+</body>
+</html>
