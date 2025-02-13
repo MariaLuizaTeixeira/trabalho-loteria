@@ -24,7 +24,7 @@ $contas[] = $conta;
 
 menu($opcao, $conta);
 
-function menu(&$opcao, &$conta, $validadorCPF, $j_valido, $k_valido): void
+function menu(&$opcao, &$conta): void
 {
     system('clear');
     
@@ -41,22 +41,13 @@ function menu(&$opcao, &$conta, $validadorCPF, $j_valido, $k_valido): void
     {
         case 1:
             $nome = readline("Insira o seu nome: ");
+            validaNome($nome);
 
             $cpf = readline("Insira o seu cpf: ");
-            for ($i=0; $i <= 9; $i++)
-            { 
-                $validadorCPF += substr($cpf, $i, 1) * 10 - $i;
-            }
+            validaCpf($cpf);
 
-            if($validadorCPF % 11 < 2)
-            {
-                $j_valido = true;
-            }
-            if ($validadorCPF % 11 > 10)
-            {
-                
-            }
             $telefone = readline("Insira o seu telefone: ");
+            validaTelefone($telefone);
 
             cadastrarCliente($clientes, $nome, $cpf, $telefone);
             cadastrarConta($contas, $cpf);
@@ -65,12 +56,40 @@ function menu(&$opcao, &$conta, $validadorCPF, $j_valido, $k_valido): void
     
         case 2:
             $cpfInserido = readline("Insira o seu cpf:");
+            validaCpfInserido($cpfInserido);
+
             $quantia = readline("Insira o valor que deseja depositar:");
+            validaQuantia($quantia);
+
             $numeroConta = $conta ['numeroConta'];
             depositar($contas, $numeroConta, $quantia, $cpfInserido);
+            menu($opcao, $conta);
         break;
 
         case 3:
+            $cpfInserido = readline("Insira o seu cpf:");
+            validaCpfInserido($cpfInserido);
+
+            $quantia = readline("Insira o valor que deseja sacar:");
+            validaQuantia($quantia);
+
+            $numeroConta = $conta ['numeroConta'];
+            sacar($contas, $numeroConta, $quantia);
+            menu($opcao, $conta);
+        break;
+
+        case 4:
+            $cpfInserido = readline("Insira o seu cpf:");
+            validaCpfInserido($cpfInserido);
+
+            $numeroConta = $conta ['numeroConta'];
+            consultarSaldo($contas, $numeroConta);
+            menu($opcao, $conta);
+        break;
+
+        case 5:
+            exit;
+        break;
 
     }
     
@@ -149,5 +168,50 @@ function consultarSaldo(&$contas, $numeroConta): void
         {
             print("Saldo da conta {$numeroConta}: R$ {$conta['saldo']}");
         }
+    }
+}
+
+function validaNome(&$nome)
+{
+    while (preg_match('/[0-9]/i',$nome)) 
+    {
+        print("Nome só aceita letras e espaços em branco. Tente novamente.\n");
+        $nome = readline("Insira o seu nome: ");
+    }
+}
+
+function validaCpf(&$cpf)
+{
+    while (preg_match('/[a-z\s]/i',$cpf)) 
+    {
+        print("CPF só aceita números. Tente novamente.\n");
+        $cpf = readline("Insira o seu cpf: ");
+    }
+}
+
+function validaTelefone(&$telefone)
+{
+    while (preg_match('/[a-z\s]/i',$telefone)) 
+    {
+        print("Telefone só aceita números. Tente novamente.\n");
+        $telefone = readline("Insira o seu telefone: ");
+    }
+}
+
+function validaQuantia(&$quantia)
+{
+    while (preg_match('/[a-z\s]/i',$quantia)) 
+    {
+        print("Telefone só aceita números. Tente novamente.\n");
+        $quantia = readline("Insira a quantia: ");
+    }
+}
+
+function validaCpfInserido(&$cpfInserido)
+{
+    while (preg_match('/[a-z\s]/i',$cpfInserido)) 
+    {
+        print("CPF só aceita números. Tente novamente.\n");
+        $cpfInserido = readline("Insira o seu cpf: ");
     }
 }
